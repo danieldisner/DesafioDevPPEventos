@@ -3,12 +3,97 @@
 
 Este repositório contém a solução para o desafio de desenvolvimento de um sistema de gerenciamento de eventos, com funcionalidades de cadastro, edição, filtragem e exclusão de eventos.
 
-## Tecnologias Utilizadas
+## Requisitos
 
-- **Laravel 11**: Framework PHP para o desenvolvimento do sistema.
-- **SQLite**: Banco de dados leve e fácil de configurar, utilizado para armazenar os dados do sistema.
-- **Tailwind CSS**: Framework CSS utilizado para o estilo das páginas.
-- **JavaScript (Vanilla)**: Usado para a interação no frontend, como a confirmação de exclusão de eventos.
+Antes de começar, verifique se você tem os seguintes requisitos instalados:
+
+- PHP 8+  
+- Composer  
+- Laravel 11  
+- SQLite (ou outro banco de dados configurado no Laravel)  
+- Node.js e NPM  
+
+## Passos para Executar Localmente
+
+### Clone o repositório:
+
+```sh
+git clone https://github.com/danieldisner/DesafioDevPPEventos.git
+cd DesafioDevPPEventos
+```
+
+### Instale as dependências do Composer:
+
+```sh
+composer install
+```
+
+### Execute o comando `composer dump-autoload`:
+
+```sh
+composer dump-autoload
+```
+
+### Instale as dependências do NPM:
+
+```sh
+npm install
+```
+
+### Compile os ativos front-end:
+
+```sh
+npm run dev
+```
+
+### Configure o banco de dados:
+
+- O projeto utiliza um banco de dados SQLite.  
+- Crie o arquivo `database/database.sqlite` se ele ainda não existir.  
+- Certifique-se de que as permissões do banco de dados estão configuradas corretamente.  
+
+### Configuração do arquivo `.env`:
+
+Copie o arquivo `.env.example` para `.env`:
+
+```sh
+cp .env.example .env
+```
+
+Abra o arquivo `.env` e configure as variáveis de ambiente para o banco de dados SQLite:
+
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=/caminho/para/seu/projeto/database/database.sqlite
+```
+
+### Gere a chave do aplicativo Laravel:
+
+```sh
+php artisan key:generate
+```
+
+### Execute as migrações:
+
+```sh
+php artisan migrate
+```
+
+### Execute o Seeder (opcional):
+
+Para popular o banco de dados com dados fictícios para testes:
+
+```sh
+php artisan db:seed --class=EventSeeder
+```
+
+### Inicie o servidor local:
+
+```sh
+php artisan serve
+```
+
+O servidor estará disponível em [http://localhost:8000](http://localhost:8000).
 
 ## Funcionalidades
 
@@ -16,80 +101,6 @@ Este repositório contém a solução para o desafio de desenvolvimento de um si
 - **Edição de Eventos**: Permite editar eventos existentes.
 - **Exclusão de Eventos**: Permite excluir eventos com uma confirmação.
 - **Filtragem**: Permite filtrar os eventos por tipo, nome, endereço, data e preço.
-
-## Como Rodar o Projeto
-
-### 1. Clonar o Repositório
-
-```bash
-git clone https://github.com/danieldisner/DesafioDevPPEventos.git
-cd DesafioDevPPEventos
-```
-
-### 2. Instalar as Dependências
-
-Primeiro, instale as dependências do Composer:
-
-```bash
-composer install
-```
-
-Depois, instale as dependências do NPM:
-
-```bash
-npm install
-```
-
-### 3. Configurar o Banco de Dados
-
-Este projeto usa o **SQLite**. Não é necessário configurar um banco de dados MySQL. Apenas crie um banco de dados SQLite:
-
-```bash
-touch database/database.sqlite
-```
-
-### 4. Configurar o Ambiente
-
-Renomeie o arquivo `.env.example` para `.env`:
-
-```bash
-mv .env.example .env
-```
-
-No arquivo `.env`, configure a conexão do banco de dados para usar o SQLite:
-
-```env
-DB_CONNECTION=sqlite
-DB_DATABASE=/path/to/database/database.sqlite
-```
-
-### 5. Rodar as Migrations
-
-Agora, execute as migrations para criar as tabelas no banco de dados:
-
-```bash
-php artisan migrate
-```
-
-### 6. Rodar o Seeder
-
-Para popular o banco de dados com dados fictícios para testes, execute o comando:
-
-```bash
-php artisan db:seed --class=EventSeeder
-```
-
-Isso irá criar alguns eventos de exemplo para testar as funcionalidades de filtragem e exibição.
-
-### 7. Iniciar o Servidor
-
-Finalmente, inicie o servidor local:
-
-```bash
-php artisan serve
-```
-
-Agora, o sistema estará disponível em [http://localhost:8000](http://localhost:8000).
 
 ## Endpoints
 
@@ -100,17 +111,10 @@ Agora, o sistema estará disponível em [http://localhost:8000](http://localhost
 - **PUT /events/{event}**: Atualiza um evento existente com os novos dados.
 - **DELETE /events/{event}**: Exclui um evento após confirmação.
 
-## Observações
+## Contribuindo
 
-- **Filtragem**: Os filtros são aplicados diretamente na lista de eventos. Você pode filtrar por tipo, nome, endereço, data e preço.
-- **Exclusão de Eventos**: Ao tentar excluir um evento, o sistema irá perguntar se você tem certeza de que deseja excluir o registro.
-
-## Contribuições
-
-Contribuições são bem-vindas! Caso queira contribuir para este projeto, basta abrir uma *issue* ou enviar um *pull request*.
+Se você deseja contribuir com este projeto, fique à vontade para fazer um fork, criar uma branch e enviar um pull request.
 
 ---
 
-**Desenvolvedor**: Daniel Disner
-
-**Tecnologias**: Laravel, SQLite, Tailwind CSS, JavaScript
+Este projeto foi desenvolvido como parte de um desafio técnico para a Próponto utilizando Laravel.
